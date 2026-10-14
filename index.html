@@ -777,7 +777,12 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
       .x-session h2 { margin: 0; font: var(--type-label); color: var(--text-secondary); }
       .x-session h2 b { font: var(--type-heading); color: var(--text-primary); }
     </style>
-  </head>
+  <style>#reader{position:relative;width:100%;max-width:420px;margin:0 auto;aspect-ratio:1/1;overflow:hidden;border-radius:16px;background:#000}
+#reader video{position:static!important;width:100%!important;height:100%!important;object-fit:cover;display:block}</style>
+<script>(function(){function fix(v){v.setAttribute("playsinline","");v.setAttribute("webkit-playsinline","");v.setAttribute("muted","");v.muted=true;v.playsInline=true;}
+new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.tagName==="VIDEO")fix(n);else if(n.querySelectorAll)n.querySelectorAll("video").forEach(fix);});});}).observe(document.documentElement,{childList:true,subtree:true});
+document.addEventListener("webkitendfullscreen",function(){},true);})();</script>
+</head>
   <body>
     <div class="page" id="top">
       <main class="main">
@@ -1171,7 +1176,7 @@ tr.is-highlight > :last-child { box-shadow: 12px 0 var(--fill-tertiary); }
           }
           qr.start(
             { facingMode: "environment" },
-            { fps: 10, qrbox: { width: 250, height: 250 } },
+            { fps: 10, qrbox: { width: 250, height: 250 }, aspectRatio: 1.0, videoConstraints: { facingMode: "environment" } },
             onDecode,
             function () {}
           ).then(function () {
